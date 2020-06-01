@@ -1,11 +1,16 @@
 package br.com.windevs.checkformebot.clients;
 
+import br.com.windevs.checkformebot.telegram.vo.TelegramSendMessageVO;
+import br.com.windevs.checkformebot.telegram.vo.TelegramWebHookVO;
+import lombok.Value;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.cloud.openfeign.SpringQueryMap;
+import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(value = "client", url = "http://www.mocky.io")
+@FeignClient(value = "telegram", url = "${telegram.url}")
 public interface StoreClient {
 
-	@GetMapping("/v2/5ed301423400005f0001f1f6")
-	Mock getMock();
+	@PostMapping("/sendmessage")
+	TelegramWebHookVO sendMessage(@SpringQueryMap TelegramSendMessageVO sendMessageVO);
+
 }
