@@ -1,39 +1,45 @@
-package br.com.windevs.checkformebot.vo;
+package br.com.windevs.checkformebot.telegram.vo;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.Data;
 
 @Data
 public class TelegramWebHookVO {
-	Message message;
+
+	private Message message;
 
 	@JsonAlias("update_id")
-	private float updateId;
+	private String updateId;
 
 	@Data
 	public static class Message {
-		From from;
-		Chat chat;
-		private float date;
+
+		private From from;
+		private Chat chat;
+		private String date;
 		private String text;
 
 		@JsonAlias("message_id")
-		private float messageId;
+		private String messageId;
+
 	}
 
 	@Data
 	public static class Chat {
-		private float id;
+
+		private String id;
 		private String username;
 		private String type;
 
 		@JsonAlias("first_name")
 		private String firstName;
+
 	}
 
 	@Data
 	public static class From {
-		private float id;
+
+		private String id;
 		private String username;
 
 		@JsonAlias("is_bot")
@@ -44,5 +50,7 @@ public class TelegramWebHookVO {
 
 		@JsonAlias("language_code")
 		private String languageCode;
+
 	}
+
 }
