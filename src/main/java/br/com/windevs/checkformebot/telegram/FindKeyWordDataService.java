@@ -28,6 +28,15 @@ public class FindKeyWordDataService {
 		this.telegramUserName = telegramUserName;
 	}
 
+	private static String urlEncodeString(String value) {
+		try {
+			return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+		} catch (UnsupportedEncodingException ex) {
+			log.error(ex);
+			return "";
+		}
+	}
+
 	public List<String> findKeyWords(TelegramWebHookVO.Message telegramMessage) {
 		final String textReceived = telegramMessage.getText();
 
@@ -57,15 +66,6 @@ public class FindKeyWordDataService {
 		}
 
 		return "text - " + string;
-	}
-
-	private static String urlEncodeString(String value) {
-		try {
-			return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
-		} catch (UnsupportedEncodingException ex) {
-			log.error(ex);
-			return "";
-		}
 	}
 
 }

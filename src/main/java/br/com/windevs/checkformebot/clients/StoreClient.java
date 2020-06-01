@@ -2,7 +2,6 @@ package br.com.windevs.checkformebot.clients;
 
 import br.com.windevs.checkformebot.telegram.vo.TelegramSendMessageVO;
 import br.com.windevs.checkformebot.telegram.vo.TelegramWebHookVO;
-import lombok.Value;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.PostMapping;
